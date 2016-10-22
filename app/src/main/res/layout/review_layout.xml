@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#b19be6">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:background="@drawable/bar_review"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/@User : มาเที่ยวที่นี่สนุกมาก ๆ เลย :)"
+                android:id="@+id/textView"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:typeface="serif"
+                android:textColor="#2f7a00"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/@User2 : สุดยอด คนเยอะสุดๆ "
+                android:id="@+id/textView2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:typeface="serif"
+                android:textColor="#2f7a00"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/@User3: บรรยากาศเย็นสบาย น่าพักผ่อนจริง ๆ "
+                android:id="@+id/textView3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:typeface="serif"
+                android:textColor="#2f7a00"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#faf8ce">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtPlaceName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:typeface="serif"
+                android:textSize="20dp"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="300dp"
+                android:layout_height="100dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/Des"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/bar_des" />
+
+            <TextView
+                android:id="@+id/txtPlaceDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="New Text"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:typeface="serif" />
+
+            <ImageView
+                android:id="@+id/Travel"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/bar_tra" />
+
+            <TextView
+                android:id="@+id/txtPlaceTravel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="New Text"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:typeface="serif" />
+
+            <ImageView
+                android:id="@+id/Open"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/bar_time" />
+
+            <TextView
+                android:id="@+id/txtPlaceOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="New Text"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:typeface="serif" />
+
+            <ImageView
+
+                android:id="@+id/Contract"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/bar_con" />
+
+            <TextView
+                android:id="@+id/txtPlaceContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="New Text"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:typeface="serif" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_b"
+            android:icon="@drawable/ic_beach"
+
+            android:title="ทะเล" />
+        <item
+            android:id="@+id/nav_w"
+            android:icon="@drawable/ic_waterfall"
+            android:title="น้ำตก" />
+        <item
+            android:id="@+id/nav_m"
+            android:icon="@drawable/ic_mountain"
+            android:title="ภูเขา" />
+        <item
+            android:id="@+id/nav_c"
+            android:icon="@drawable/ic_cave"
+            android:title="ถ้ำ" />
+        <item
+            android:id="@+id/nav_canu"
+            android:icon="@drawable/ic_canu"
+            android:title="แก่ง" />
+
+    </group>
+    <item
+        android:title="More...">
+        <menu>
+            <item
+                android:id="@+id/nav_map"
+                android:icon="@drawable/ic_map"
+                android:title="แผนที่" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="ออกจากระบบ" />
+        </menu>
+    </item>
+
+
+</menu>

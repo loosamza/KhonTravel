@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tab>
+    <tab
+        icon="@drawable/ic_des"
+        id="@+id/tab_des"
+        title="Description"
+        barColorWhenSelected="#fffa92"/>
+    <tab
+        icon="@drawable/ic_review"
+        id="@+id/tab_review"
+        title="Review"
+        barColorWhenSelected="#603bbc"/>
+    <tab
+        icon="@drawable/ic_map"
+        id="@+id/tab_map"
+        title="Map"
+        barColorWhenSelected="#00a200"/>
+    <tab
+        icon="@drawable/ic_near"
+        id="@+id/tab_nearplace"
+        title="Near Place"
+        barColorWhenSelected="#277aed"/>
+    <tab
+        icon="@drawable/ic_other"
+        id="@+id/tab_other"
+        title="Other"
+        barColorWhenSelected="#db562d"/>
+</tab>
