@@ -83,15 +83,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         TypefaceUti.overrideFont(getApplicationContext(), "SERIF", "bj.ttf");
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        //FacebookSdk.sdkInitialize(getApplicationContext());
 
         setContentView(R.layout.activity_main);
 
 
         // Log.i("Token", AccessToken.getCurrentAccessToken().getToken());
-        if (AccessToken.getCurrentAccessToken() == null) {
-            goLoginScreen();
-        } else {
 
 
             initWidget();
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             setNavigator();
-        }
+
 
 
         //Toast.makeText(getApplicationContext(), "Map test", Toast.LENGTH_SHORT).show();
@@ -122,23 +119,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         userPic = (ImageView) header.findViewById(R.id.userPic);
 
 
-        if (getIntent() != null & getIntent().getExtras() != null) {
-            profile = getIntent().getExtras().getParcelable("profile");
-
-            try {
-
-                objControl_Databse.addValueToUID(profile.getId());
-            } catch (Exception e) {
-                Log.d("UID ADD", "มีข้อมูลแล้ว " + e.toString());
-            }
 
 //            Log.i("profile > ", profile.getFirstName() + " ");
 
-            userName.setText(profile.getFirstName() + " " + profile.getLastName());
+          /*  userName.setText(profile.getFirstName() + " " + profile.getLastName());
             Picasso.with(getApplicationContext())
                     .load(profile.getProfilePictureUri(130, 100))
                     .into(userPic);
-
+*/
 
             //setuserName = getIntent().getStringExtra("nameUser");
             //setuserPic = getIntent().getStringExtra("url");
@@ -162,9 +150,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 listLng[i] = coordinate.longitude;
             }
 
-        } else {
-            goLoginScreen();
-        }
+
     }
 
     public void setNavigator() {

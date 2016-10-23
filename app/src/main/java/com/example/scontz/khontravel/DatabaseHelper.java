@@ -34,7 +34,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_tb_user = "tb_user";
     private static final String Col_uid = "uid";
-    private static final String Col_token = "token";
+    private static final String Col_username = "username";
+    private static final String Col_password = "password";
+    private static final String Col_firstname = "firstname";
+    private static final String Col_lastname = "lastname";
 
     //Table place review
 
@@ -69,7 +72,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String Create_tb_user = "CREATE TABLE "
             + TABLE_tb_user
             + " (" + Col_uid + " text PRIMARY KEY "
-          //  + Col_token + " text"
+            + " (" + Col_username + " text, "
+            + " (" + Col_password + " text, "
+            + " (" + Col_firstname + " text, "
+            + " (" + Col_lastname + " text, "
             + " );";
 
     //Create TABLE review
@@ -93,10 +99,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Create_tb_placedetail);
         Log.d("CREATE TABLE", "Create Table 1 Successfully.");
-        db.execSQL(Create_tb_review);
-        Log.d("CREATE TABLE", "Create Table 2 Successfully.");
-        db.execSQL(Create_tb_user);
-        Log.d("CREATE TABLE", "Create Table 3 Successfully.");
+ //       db.execSQL(Create_tb_review);
+//        Log.d("CREATE TABLE", "Create Table 2 Successfully.");
+//        db.execSQL(Create_tb_user);
+//        Log.d("CREATE TABLE", "Create Table 3 Successfully.");
 
 
     }//onCreate

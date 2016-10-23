@@ -211,13 +211,13 @@ public class Splash_Screen extends AppCompatActivity {
         }
 
 
-    }
+    } // SynJson
 
 
     private void deleteAllData() {
         SQLiteDatabase objSQLiteDataase = openOrCreateDatabase("endproject.db", MODE_PRIVATE, null);
         objSQLiteDataase.delete("tb_placedetail", null, null);
-    }
+    } // Delete
 
 
 }

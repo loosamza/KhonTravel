@@ -9,55 +9,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/linReview">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:background="@drawable/bar_review"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView2"
-                android:background="@drawable/bar_review"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="/@User : มาเที่ยวที่นี่สนุกมาก ๆ เลย :)"
-                android:id="@+id/textView"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                android:typeface="serif"
-                android:textColor="#2f7a00"
-                android:textSize="18dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="/@User2 : สุดยอด คนเยอะสุดๆ "
-                android:id="@+id/textView2"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                android:typeface="serif"
-                android:textColor="#2f7a00"
-                android:textSize="18dp" />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputReview" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="/@User3: บรรยากาศเย็นสบาย น่าพักผ่อนจริง ๆ "
-                android:id="@+id/textView3"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                android:typeface="serif"
-                android:textColor="#2f7a00"
-                android:textSize="18dp" />
-        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/send"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>

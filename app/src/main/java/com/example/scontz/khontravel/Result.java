@@ -30,7 +30,7 @@ public class Result extends AppCompatActivity {
 
     TextView txtPlaceName, txtPlaceDes, txtPlaceTravel, txtPlaceOpen, txtPlaceContact, txtNearPlace;
     ImageView img;
-    String a, b, c, d, e, f;
+    String strType, strPlaceName, strDes, strTravel, strOpen, strImg, strContact;
     double lat, lng;
     String[][] location = null;
 
@@ -105,12 +105,12 @@ public class Result extends AppCompatActivity {
     } // oncreate
 
     private void setAll() {
-        Picasso.with(this).load(e).resize(300, 100).into(img);
-        txtPlaceName.setText(a);
-        txtPlaceDes.setText(b);
-        txtPlaceTravel.setText(c);
-        txtPlaceOpen.setText(d);
-        txtPlaceContact.setText(f);
+        Picasso.with(this).load(strImg).resize(300, 100).into(img);
+        txtPlaceName.setText(strPlaceName);
+        txtPlaceDes.setText(strDes);
+        txtPlaceTravel.setText(strTravel);
+        txtPlaceOpen.setText(strOpen);
+        txtPlaceContact.setText(strContact);
     } //Set data
 
     private void initWidget() {
@@ -121,14 +121,25 @@ public class Result extends AppCompatActivity {
         txtPlaceOpen = (TextView) findViewById(R.id.txtPlaceOpen);
         txtPlaceContact = (TextView) findViewById(R.id.txtPlaceContact);
 
-        a = getIntent().getExtras().getString("strPlaceName");
-        b = getIntent().getExtras().getString("strDes");
-        c = getIntent().getExtras().getString("strTravel");
-        d = getIntent().getExtras().getString("strOpen");
-        e = getIntent().getExtras().getString("strImg");
-        f = getIntent().getExtras().getString("strContact");
+
+        strType = getIntent().getExtras().getString("strType");
+        strPlaceName = getIntent().getExtras().getString("strPlaceName");
+        strDes = getIntent().getExtras().getString("strDes");
+        strTravel = getIntent().getExtras().getString("strTravel");
+        strOpen = getIntent().getExtras().getString("strOpen");
+        strImg = getIntent().getExtras().getString("strImg");
+        strContact = getIntent().getExtras().getString("strContact");
 
 
     }// find id get Intent
+
+    public String getStrPlaceName() {
+        return strPlaceName;
+    }
+
+    public String getStrType() {
+        return strType;
+    }
+
 
 }//Main

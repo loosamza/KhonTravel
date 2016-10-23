@@ -64,6 +64,7 @@ public class ShowSelect extends AppCompatActivity {
 
                 //Intent
                 Intent intent = new Intent(getApplicationContext(), Result.class);
+                intent.putExtra("strType", type);
                 intent.putExtra("strPlaceName", strPlaceName);
                 intent.putExtra("strDes", strDes);
                 intent.putExtra("strTravel", strTravel);
