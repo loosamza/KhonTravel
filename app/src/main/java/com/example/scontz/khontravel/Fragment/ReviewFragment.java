@@ -1,6 +1,7 @@
 package com.example.scontz.khontravel.Fragment;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -52,9 +53,10 @@ public class ReviewFragment extends Fragment {
     View myView;
     String strType, strPlaceName, strDate, strTime;
     String p_code, ptype_code, uid, text_review, date, time;
+    private String review;
     EditText inputReview;
     Button send;
-    int id = 1;
+    int id;
     int c_review = 1;
 
     @Nullable
@@ -71,18 +73,25 @@ public class ReviewFragment extends Fragment {
         Result activity = (Result) getActivity();
         strPlaceName = activity.getStrPlaceName();
         strType = activity.getStrType();
+        id = activity.getId();
+        uid = Integer.toString(id);
         inputReview = (EditText) view.findViewById(R.id.inputReview);
         send = (Button) view.findViewById(R.id.send);
+
+
 
         send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 //เช็คการเป็นสมาชิก
+                review = inputReview.getText().toString();
                 if (id == 0) {
                     Toast.makeText(getActivity(), "คุณไม่ได้ล๊อคอินไม่ได้สามารถแสดงความคิดเห็นได้", Toast.LENGTH_SHORT).show();
                 } else if (c_review < 1) {
                     Toast.makeText(getActivity(), "คุณแสดงความคิดเห็นครบแล้วสำหรับวันนี้", Toast.LENGTH_SHORT).show();
+                } else if (review.trim().length() == 0) {
+                    Toast.makeText(getActivity(), "คุณไม่ได้กรอกข้อมูล", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Asia/Bangkok"));
@@ -116,7 +125,7 @@ public class ReviewFragment extends Fragment {
             objNameValuePairs.add(new BasicNameValuePair("isAdd", "true"));
             objNameValuePairs.add(new BasicNameValuePair("p_code", p_code));
             objNameValuePairs.add(new BasicNameValuePair("ptype_code", ptype_code));
-            objNameValuePairs.add(new BasicNameValuePair("uid", "1"));
+            objNameValuePairs.add(new BasicNameValuePair("uid", uid));
             objNameValuePairs.add(new BasicNameValuePair("text_review", text_review));
             objNameValuePairs.add(new BasicNameValuePair("date", date));
             objNameValuePairs.add(new BasicNameValuePair("time", time));
@@ -127,12 +136,15 @@ public class ReviewFragment extends Fragment {
             objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
             objHttpClient.execute(objHttpPost);
 
-            Log.d("csclub", "Update mySQL ===> ทำแล้ว ");
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.detach(this).attach(this).commit();
+
+           /* Log.d("csclub", "Update mySQL ===> ทำแล้ว ");
             Log.d("csclub", "Update mySQL ===> " + p_code);
             Log.d("csclub", "Update mySQL ===> " + ptype_code);
             Log.d("csclub", "Update mySQL ===> " + text_review);
             Log.d("csclub", "Update mySQL ===> " + date);
-            Log.d("csclub", "Update mySQL ===> " + time);
+            Log.d("csclub", "Update mySQL ===> " + time);*/
 
 
         } catch (Exception e) {
@@ -142,7 +154,7 @@ public class ReviewFragment extends Fragment {
 
     } //upDateComment
 
-    private void setAll(int i, View view, String p_name, String text_review, String time) {
+    private void setAll(int i, View view, String username, String text_review, String time, String date) {
         final TextView textView = new TextView(getActivity());
         final LinearLayout linearLayout = new LinearLayout(getActivity());
         LinearLayout mLinearLayout = (LinearLayout) view.findViewById(R.id.linReview);
@@ -151,7 +163,7 @@ public class ReviewFragment extends Fragment {
         //กรอบโชว์คอมมเม้น
         LinearLayout.LayoutParams liNearParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        liNearParams.setMargins(10, 30, 10, 30);
+        liNearParams.setMargins(15, 10, 15, 0);
         linearLayout.setLayoutParams(liNearParams);
         linearLayout.setBackgroundColor(Color.WHITE);
         //คอมเม้น
@@ -160,7 +172,7 @@ public class ReviewFragment extends Fragment {
         textViewParams.setMargins(20, 20, 20, 20);
 
         textView.setLayoutParams(textViewParams);
-        textView.setText(p_name + "\n" + text_review + "\n" + time);
+        textView.setText(username + " : " + "\n" + text_review + "\n" + "วันที่ : " + date + " เวลา : " + time);
         textView.setTypeface(Typeface.SERIF);
 
         try {
@@ -222,6 +234,7 @@ public class ReviewFragment extends Fragment {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String p_name = jsonObject.getString("p_name");
+                String username = jsonObject.getString("username");
                 String ptype_name = jsonObject.getString("ptype_name");
                 String text_review = jsonObject.getString("text_review");
                 String date = jsonObject.getString("date");
@@ -232,8 +245,9 @@ public class ReviewFragment extends Fragment {
                 Log.d("csclub", "tname >>>" + strType);*/
 
                 if (ptype_name.equals(strType) && p_name.equals(strPlaceName)) {
-                    setAll(i, myView, p_name, text_review, time);
+                    setAll(i, myView, username, text_review, time, date);
                     Log.d("csclub", "name >>>" + p_name);
+                    Log.d("csclub", "username >>>" + username);
                     Log.d("csclub", "tname >>>" + ptype_name);
                     Log.d("csclub", "t_review >>>" + text_review);
                     Log.d("csclub", "date >>>" + date);

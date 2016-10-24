@@ -42,7 +42,11 @@ public class Control_Database {
 
     private static final String TABLE_tb_user = "tb_user";
     private static final String Col_uid = "uid";
-    private static final String Col_token = "token";
+    private static final String Col_username = "username";
+    private static final String Col_password = "password";
+    private static final String Col_firstname = "firstname";
+    private static final String Col_lastname = "lastname";
+
     //Table place review
 
     private static final String TABLE_tb_review = "tb_review";
@@ -80,22 +84,30 @@ public class Control_Database {
 
     } // add value to table
 
+    public long addValueToUserTable(int uid, String user, String pass, String fname, String lname) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Col_uid, uid);
+        contentValues.put(Col_username, user);
+        contentValues.put(Col_password, pass);
+        contentValues.put(Col_firstname, fname);
+        contentValues.put(Col_lastname, lname);
+
+
+        return writeSQLite.insert(TABLE_tb_user, null, contentValues);
+    }
+
+
+
     public long addValueToUID(String uid) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Col_uid, uid);
         //contentValues.put(Col_token, token);
         return writeSQLite.insert(TABLE_tb_user, null, contentValues);
-    }
+    } // add value to user Table
 
-    public String getUID(String token) {
-        String uid = null;
-        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_uid + " FROM " + TABLE_tb_user
-                + " WHERE " + Col_token + " = " + token, null);
-        cursor.moveToFirst();
-        uid = cursor.getString(cursor.getColumnIndex(Col_uid));
-        cursor.close();
-        return uid;
-    }
+
+
+
 
     public String[] ListPlaceName(String type) {
 

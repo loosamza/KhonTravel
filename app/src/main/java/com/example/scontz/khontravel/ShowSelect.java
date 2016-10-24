@@ -1,11 +1,14 @@
 package com.example.scontz.khontravel;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +19,10 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class ShowSelect extends AppCompatActivity {
 
+    final String LOGIN = "App_Login";
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
     Control_Database objContrrol_Database;
     TextView txtPlaceType;
     String[] strListPlaceName, strListImg, strListDes, strListTravel, strListOpen, strListContact; //ตัวเก็บค่า
@@ -24,6 +31,9 @@ public class ShowSelect extends AppCompatActivity {
     Double doubLat, doubLng;
     private int[] pos, neg; // %
     String type;
+    private String u, f, l;
+     int i;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +74,12 @@ public class ShowSelect extends AppCompatActivity {
 
                 //Intent
                 Intent intent = new Intent(getApplicationContext(), Result.class);
+
+                //รับไว้เพื่อส่งต่อ
+
+                intent.putExtra("uid", i);
+
+
                 intent.putExtra("strType", type);
                 intent.putExtra("strPlaceName", strPlaceName);
                 intent.putExtra("strDes", strDes);
@@ -102,6 +118,9 @@ public class ShowSelect extends AppCompatActivity {
         type = getIntent().getExtras().getString("key");
         txtPlaceType = (TextView) findViewById(R.id.txtPlaceType);
         txtPlaceType.setText(type);
+
+
+
 
     }
 

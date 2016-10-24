@@ -1,13 +1,16 @@
 package com.example.scontz.khontravel;
 
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,11 +31,17 @@ import com.squareup.picasso.Picasso;
 
 public class Result extends AppCompatActivity {
 
+    final String LOGIN = "App_Login";
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
     TextView txtPlaceName, txtPlaceDes, txtPlaceTravel, txtPlaceOpen, txtPlaceContact, txtNearPlace;
     ImageView img;
     String strType, strPlaceName, strDes, strTravel, strOpen, strImg, strContact;
     double lat, lng;
     String[][] location = null;
+    private String u, f, l;
+    int i;
 
 
     @Override
@@ -130,6 +139,12 @@ public class Result extends AppCompatActivity {
         strImg = getIntent().getExtras().getString("strImg");
         strContact = getIntent().getExtras().getString("strContact");
 
+        sp = getSharedPreferences(LOGIN, Context.MODE_PRIVATE);
+        int id = sp.getInt("uid", -1);
+        Log.d("Login", "" + id);
+
+        i = id;
+
 
     }// find id get Intent
 
@@ -139,6 +154,10 @@ public class Result extends AppCompatActivity {
 
     public String getStrType() {
         return strType;
+    }
+
+    public int getId() {
+        return i;
     }
 
 

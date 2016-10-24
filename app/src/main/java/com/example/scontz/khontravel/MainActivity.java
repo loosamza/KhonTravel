@@ -2,6 +2,7 @@ package com.example.scontz.khontravel;
 
 
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -66,6 +67,10 @@ import cz.msebera.android.httpclient.extras.Base64;
 */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    final String LOGIN = "App_Login";
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
     TextView userName;
     ImageView userPic;
     String setuserName, setuserPic;
@@ -76,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     LatLng coordinate;
     private double[] listLat, listLng;
     Bundle bundle;
-    Profile profile = null;
+    private String u, f, l;
+    int i;
 
 
     @Override
@@ -91,18 +97,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Log.i("Token", AccessToken.getCurrentAccessToken().getToken());
 
 
-            initWidget();
+        initWidget();
 
-            if (savedInstanceState == null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container,
-                                new MainFragment())
-                        .commit();
-            }
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container,
+                            new MainFragment())
+                    .commit();
+        }
 
-            setNavigator();
-
+        setNavigator();
 
 
         //Toast.makeText(getApplicationContext(), "Map test", Toast.LENGTH_SHORT).show();
@@ -111,44 +116,62 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initWidget() {
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         userName = (TextView) header.findViewById(R.id.nameUser);
         userPic = (ImageView) header.findViewById(R.id.userPic);
 
+        sp = getSharedPreferences(LOGIN, Context.MODE_PRIVATE);
+        int id = sp.getInt("uid", -1);
+        Log.d("Login", "" + id);
+
+        if (id != 0) {
+            final String user = sp.getString("username", "");
+            final String fname = sp.getString("fname", "");
+            final String lname = sp.getString("lname", "");
+
+            i = id;
+            u = user;
+            f = fname;
+            l = lname;
+
+            userName.setText(f + " " + l);
+        } else {
+            i = id;
+            userName.setText("ผู้ใช้ทั่วไป");
+        }
 
 
 //            Log.i("profile > ", profile.getFirstName() + " ");
 
-          /*  userName.setText(profile.getFirstName() + " " + profile.getLastName());
+          /*
             Picasso.with(getApplicationContext())
                     .load(profile.getProfilePictureUri(130, 100))
                     .into(userPic);
 */
 
-            //setuserName = getIntent().getStringExtra("nameUser");
-            //setuserPic = getIntent().getStringExtra("url");
+        //setuserName = getIntent().getStringExtra("nameUser");
+        //setuserPic = getIntent().getStringExtra("url");
 
 
-            objControl_Databse = new Control_Database(getApplicationContext());
+        objControl_Databse = new Control_Database(getApplicationContext());
 
 
-            strMLpName = objControl_Databse.ListMapPlaceName();
-            strMLpType = objControl_Databse.ListMapPlaceType();
-            strMLIMG = objControl_Databse.ListMapIMG();
-            location = objControl_Databse.Location();
+        strMLpName = objControl_Databse.ListMapPlaceName();
+        strMLpType = objControl_Databse.ListMapPlaceType();
+        strMLIMG = objControl_Databse.ListMapIMG();
+        location = objControl_Databse.Location();
 
-            listLat = new double[location.size()];
-            listLng = new double[location.size()];
+        listLat = new double[location.size()];
+        listLng = new double[location.size()];
 
 
-            for (int i = 0; i < location.size(); i++) {
-                coordinate = location.get(i);
-                listLat[i] = coordinate.latitude;
-                listLng[i] = coordinate.longitude;
-            }
+        for (int i = 0; i < location.size(); i++) {
+            coordinate = location.get(i);
+            listLat[i] = coordinate.latitude;
+            listLng[i] = coordinate.longitude;
+        }
 
 
     }
@@ -195,6 +218,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bundle = new Bundle();
         FragmentManager fragmentManager = getFragmentManager();
         Intent intent = new Intent(getApplicationContext(), ShowSelect.class);
+
+        //รับไว้เพื่อส่งต่อ
+
+
+        intent.putExtra("uid", i);
+        Log.d("Login", "" + i);
+
+
         switch (item.getItemId()) {
 
             case R.id.nav_b:
@@ -270,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void logout() {
-        LoginManager.getInstance().logOut();
+
         goLoginScreen();
     }
 }

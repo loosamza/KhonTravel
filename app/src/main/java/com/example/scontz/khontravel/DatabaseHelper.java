@@ -71,11 +71,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String Create_tb_user = "CREATE TABLE "
             + TABLE_tb_user
-            + " (" + Col_uid + " text PRIMARY KEY "
-            + " (" + Col_username + " text, "
-            + " (" + Col_password + " text, "
-            + " (" + Col_firstname + " text, "
-            + " (" + Col_lastname + " text, "
+            + "( " + Col_uid + " integer PRIMARY KEY, "
+            + Col_username + " text, "
+            + Col_password + " text, "
+            + Col_firstname + " text, "
+            + Col_lastname + " text "
             + " );";
 
     //Create TABLE review
@@ -98,11 +98,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Create_tb_placedetail);
-        Log.d("CREATE TABLE", "Create Table 1 Successfully.");
- //       db.execSQL(Create_tb_review);
+        Log.d("DB", "Create Table 1 Successfully.");
+        //       db.execSQL(Create_tb_review);
 //        Log.d("CREATE TABLE", "Create Table 2 Successfully.");
-//        db.execSQL(Create_tb_user);
-//        Log.d("CREATE TABLE", "Create Table 3 Successfully.");
+        db.execSQL(Create_tb_user);
+        Log.d("DB", "Create Table 3 Successfully.");
 
 
     }//onCreate
