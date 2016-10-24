@@ -75,9 +75,7 @@ public class ShowSelect extends AppCompatActivity {
                 //Intent
                 Intent intent = new Intent(getApplicationContext(), Result.class);
 
-                //รับไว้เพื่อส่งต่อ
 
-                intent.putExtra("uid", i);
 
 
                 intent.putExtra("strType", type);

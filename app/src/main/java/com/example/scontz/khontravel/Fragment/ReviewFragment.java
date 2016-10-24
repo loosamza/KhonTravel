@@ -2,6 +2,8 @@ package com.example.scontz.khontravel.Fragment;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -31,9 +33,12 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import cz.msebera.android.httpclient.HttpEntity;
@@ -50,12 +55,15 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
  */
 public class ReviewFragment extends Fragment {
 
+
     View myView;
     String strType, strPlaceName, strDate, strTime;
     String p_code, ptype_code, uid, text_review, date, time;
+    List<String> jdate = new ArrayList<String>();
     private String review;
     EditText inputReview;
     Button send;
+    String uname;
     int id;
     int c_review = 1;
 
@@ -64,10 +72,54 @@ public class ReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         TypefaceUti.overrideFont(getActivity(), "SERIF", "bj.ttf");
         myView = inflater.inflate(R.layout.review_layout, container, false);
+
         initWidget(myView);
         synJSon();
+
+        setOnclick();
+
+
         return myView;
     }//oncreate
+
+    private void setOnclick() {
+        send.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //เช็คการเป็นสมาชิก
+                review = inputReview.getText().toString();
+                Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Asia/Bangkok"));
+                SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd");
+                date = mdformat.format(c.getTime());
+                SimpleDateFormat mtformat = new SimpleDateFormat("HH:mm:ss");
+                time = mtformat.format(c.getTime());
+                //Log.d("csclub", "array date >>> " + Arrays.toString(jdate.toArray()));
+                //Log.d("csclub", "date >>> " + date);
+
+
+                if (id == 0) {
+                    Toast.makeText(getActivity(), "คุณไม่ได้ล๊อคอินไม่ได้สามารถแสดงความคิดเห็นได้", Toast.LENGTH_SHORT).show();
+                } else if (jdate.contains(date)) {
+                    Toast.makeText(getActivity(), "วันนี้คุณแสดงความคิดเห็นไปแล้ว", Toast.LENGTH_SHORT).show();
+                } else if (review.trim().length() == 0) {
+                    Toast.makeText(getActivity(), "คุณไม่ได้กรอกข้อมูล", Toast.LENGTH_SHORT).show();
+                } else {
+
+
+                    //Log.d("csclub", "Time ===> " + date);
+                    //Log.d("csclub", "Time ===> " + time);
+                    text_review = inputReview.getText().toString();
+                    MyMethod objMyMethod = new MyMethod();
+                    p_code = objMyMethod.changePnameToCode(strPlaceName);
+                    ptype_code = objMyMethod.changePtypeToCode(strType);
+                    upDateCommentToMySQL();
+                }
+
+                inputReview.setText("");
+            }
+        });
+    }
 
     private void initWidget(View view) {
         Result activity = (Result) getActivity();
@@ -79,36 +131,10 @@ public class ReviewFragment extends Fragment {
         send = (Button) view.findViewById(R.id.send);
 
 
+        if (id != 0) {
+            uname = activity.getUser();
+        }
 
-        send.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //เช็คการเป็นสมาชิก
-                review = inputReview.getText().toString();
-                if (id == 0) {
-                    Toast.makeText(getActivity(), "คุณไม่ได้ล๊อคอินไม่ได้สามารถแสดงความคิดเห็นได้", Toast.LENGTH_SHORT).show();
-                } else if (c_review < 1) {
-                    Toast.makeText(getActivity(), "คุณแสดงความคิดเห็นครบแล้วสำหรับวันนี้", Toast.LENGTH_SHORT).show();
-                } else if (review.trim().length() == 0) {
-                    Toast.makeText(getActivity(), "คุณไม่ได้กรอกข้อมูล", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Asia/Bangkok"));
-                    SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd");
-                    date = mdformat.format(c.getTime());
-                    SimpleDateFormat mtformat = new SimpleDateFormat("HH:mm:ss");
-                    time = mtformat.format(c.getTime());
-                    //Log.d("csclub", "Time ===> " + date);
-                    //Log.d("csclub", "Time ===> " + time);
-                    text_review = inputReview.getText().toString();
-                    MyMethod objMyMethod = new MyMethod();
-                    p_code = objMyMethod.changePnameToCode(strPlaceName);
-                    ptype_code = objMyMethod.changePtypeToCode(strType);
-                    upDateCommentToMySQL();
-                }
-            }
-        });
 
     }// initWidget
 
@@ -245,13 +271,23 @@ public class ReviewFragment extends Fragment {
                 Log.d("csclub", "tname >>>" + strType);*/
 
                 if (ptype_name.equals(strType) && p_name.equals(strPlaceName)) {
+                    if (uname.equals(username)) {
+                        if (!(jdate.contains(date))) {
+                            jdate.add(date);
+                        }
+
+
+                        //Log.d("csclub", "in if username >>>" + username);
+                        //Log.d("csclub", "in if date >>>" + date);
+                    }
+
                     setAll(i, myView, username, text_review, time, date);
-                    Log.d("csclub", "name >>>" + p_name);
+                    /*Log.d("csclub", "name >>>" + p_name);
                     Log.d("csclub", "username >>>" + username);
                     Log.d("csclub", "tname >>>" + ptype_name);
                     Log.d("csclub", "t_review >>>" + text_review);
                     Log.d("csclub", "date >>>" + date);
-                    Log.d("csclub", "time >>>" + time);
+                    Log.d("csclub", "time >>>" + time);*/
                 }
 
 

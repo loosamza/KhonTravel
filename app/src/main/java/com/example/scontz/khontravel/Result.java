@@ -40,8 +40,8 @@ public class Result extends AppCompatActivity {
     String strType, strPlaceName, strDes, strTravel, strOpen, strImg, strContact;
     double lat, lng;
     String[][] location = null;
-    private String u, f, l;
-    int i;
+    public String user, fname, lname;
+    public int i;
 
 
     @Override
@@ -141,6 +141,13 @@ public class Result extends AppCompatActivity {
 
         sp = getSharedPreferences(LOGIN, Context.MODE_PRIVATE);
         int id = sp.getInt("uid", -1);
+
+        if (id != 0) {
+            user = sp.getString("username", "");
+
+        }
+
+
         Log.d("Login", "" + id);
 
         i = id;
@@ -158,6 +165,10 @@ public class Result extends AppCompatActivity {
 
     public int getId() {
         return i;
+    }
+
+    public String getUser() {
+        return user;
     }
 
 
