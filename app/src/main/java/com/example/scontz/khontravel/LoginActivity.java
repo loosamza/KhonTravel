@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.scontz.khontravel.Fonts.TypefaceUti;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TypefaceUti.overrideFont(getApplicationContext(), "SERIF", "bj.ttf");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         objControl_Database = new Control_Database(this);

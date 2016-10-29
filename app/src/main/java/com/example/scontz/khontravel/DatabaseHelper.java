@@ -63,8 +63,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + Col_pic_code + " text, "
             + Col_latitude + " double, "
             + Col_longitude + " double, "
-            + Col_p_pos + " integer, "
-            + Col_p_neg + " integer "
+            + Col_p_pos + " double, "
+            + Col_p_neg + " double "
             + " ); ";
 
     //Create TABLE uid

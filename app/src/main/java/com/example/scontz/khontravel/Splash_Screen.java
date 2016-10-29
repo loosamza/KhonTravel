@@ -200,8 +200,8 @@ public class Splash_Screen extends AppCompatActivity {
                 String pic_code = jsonObject.getString("pic_code");
                 double latitude = jsonObject.getDouble("latitude");
                 double longitude = jsonObject.getDouble("longitude");
-                int p_pos = jsonObject.getInt("p_pos");
-                int p_neg = jsonObject.getInt("p_neg");
+                double p_pos = jsonObject.getInt("p_pos");
+                double p_neg = jsonObject.getInt("p_neg");
 
 
                 long insertValue = objControl_Database.addValueToPlaceDetail(p_name, ptype_name, p_des, p_travel, p_open, p_contact, main_pic, pic_code, latitude, longitude, p_pos, p_neg);

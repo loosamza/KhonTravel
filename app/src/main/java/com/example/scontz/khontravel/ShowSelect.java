@@ -27,9 +27,9 @@ public class ShowSelect extends AppCompatActivity {
     TextView txtPlaceType;
     String[] strListPlaceName, strListImg, strListDes, strListTravel, strListOpen, strListContact; //ตัวเก็บค่า
     String strPlaceName, strDes, strTravel, strOpen, strContact, strImg; //ตัวโยนค่า
-    Double[] douListLat, doubListLng;
-    Double doubLat, doubLng;
-    private int[] pos, neg; // %
+    double[] douListLat, doubListLng,doubListPos,doubListNeg;
+    double doubLat, doubLng;
+    private double[] pos, neg; // %
     String type;
     private String u, f, l;
      int i;
@@ -50,7 +50,7 @@ public class ShowSelect extends AppCompatActivity {
     }
 
     private void createListView() {
-        MyAdapter myAdapter = new MyAdapter(ShowSelect.this, strListPlaceName, strListImg, pos, neg);
+        MyAdapter myAdapter = new MyAdapter(ShowSelect.this, strListPlaceName, strListImg, doubListPos, doubListNeg);
 
         ListView listView = (ListView) findViewById(R.id.selectListview);
 
@@ -108,6 +108,9 @@ public class ShowSelect extends AppCompatActivity {
         strListImg = objContrrol_Database.ListIMG(type);
         douListLat = objContrrol_Database.ListLat(type);
         doubListLng = objContrrol_Database.ListLng(type);
+        doubListPos = objContrrol_Database.ListPos(type);
+        doubListNeg = objContrrol_Database.ListNeg(type);
+
 
 
     }

@@ -45,7 +45,8 @@
                     android:id="@+id/user"
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/imageView5"
-                    android:hint="Username" />
+                    android:hint="Username"
+                    android:typeface="serif" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -75,19 +76,21 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/imageView6"
                     android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:typeface="serif" />
             </RelativeLayout>
         </LinearLayout>
 
         <Button
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
             android:text="Sing In"
             android:id="@+id/login"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:background="#22923e"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:typeface="serif" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -95,9 +98,10 @@
             android:text="Using with out Sign In"
             android:id="@+id/gotoMain"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:textColor="#060606"
-            android:textSize="14dp" />
+            android:textSize="12dp"
+            android:typeface="serif" />
 
     </LinearLayout>
 
@@ -110,5 +114,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:textColor="#060606"
-        android:textSize="14dp" />
+        android:textSize="12dp"
+        android:typeface="serif" />
 </RelativeLayout>

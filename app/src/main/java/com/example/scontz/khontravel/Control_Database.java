@@ -64,7 +64,7 @@ public class Control_Database {
 
     //addValue
 
-    public long addValueToPlaceDetail(String p_name, String ptype_name, String p_des, String p_travel, String p_open, String p_contact, String main_pic, String pic_code, double latitude, double longitude, int p_pos, int p_neg) {
+    public long addValueToPlaceDetail(String p_name, String ptype_name, String p_des, String p_travel, String p_open, String p_contact, String main_pic, String pic_code, double latitude, double longitude, double p_pos, double p_neg) {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(Col_p_name, p_name);
@@ -194,11 +194,11 @@ public class Control_Database {
         return strList;
     } // ListIMG
 
-    public Double[] ListLat(String type) {
-        Double[] doubList = null;
+    public double[] ListLat(String type) {
+        double[] doubList = null;
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_latitude + " FROM " + TABLE_tp_placedetail + " WHERE " + Col_ptype_name + " = '" + type + "'", null);
         cursor.moveToFirst();
-        doubList = new Double[cursor.getCount()];
+        doubList = new double[cursor.getCount()];
         for (int i = 0; i < cursor.getCount(); i++) {
 
             doubList[i] = cursor.getDouble(cursor.getColumnIndex(Col_latitude));
@@ -208,13 +208,13 @@ public class Control_Database {
         return doubList;
     } // ListLat
 
-    public Double[] ListLng(String type) {
-        Double[] doubList = null;
+    public double[] ListLng(String type) {
+        double[] doubList = null;
 
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_longitude + " FROM " + TABLE_tp_placedetail + " WHERE " + Col_ptype_name + " = '" + type + "'", null);
         cursor.moveToFirst();
 
-        doubList = new Double[cursor.getCount()];
+        doubList = new double[cursor.getCount()];
         for (int i = 0; i < cursor.getCount(); i++) {
             doubList[i] = cursor.getDouble(cursor.getColumnIndex(Col_longitude));
             cursor.moveToNext();
@@ -224,15 +224,48 @@ public class Control_Database {
         return doubList;
     } // ListLng
 
+    public double[] ListPos(String type) {
+        double[] doubList = null;
+
+        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_pos + " FROM " + TABLE_tp_placedetail + " WHERE " + Col_ptype_name + " = '" + type + "'", null);
+        cursor.moveToFirst();
+
+        doubList = new double[cursor.getCount()];
+        for (int i = 0; i < cursor.getCount(); i++) {
+            doubList[i] = cursor.getDouble(cursor.getColumnIndex(Col_p_pos));
+            cursor.moveToNext();
+
+        } // for
+        cursor.close();
+        return doubList;
+    } // ListPos
+
+    public double[] ListNeg(String type) {
+        double[] doubList = null;
+
+        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_neg + " FROM " + TABLE_tp_placedetail + " WHERE " + Col_ptype_name + " = '" + type + "'", null);
+        cursor.moveToFirst();
+
+        doubList = new double[cursor.getCount()];
+        for (int i = 0; i < cursor.getCount(); i++) {
+            doubList[i] = cursor.getDouble(cursor.getColumnIndex(Col_p_neg));
+            cursor.moveToNext();
+
+        } // for
+        cursor.close();
+        return doubList;
+    } // ListNeg
+
+
     //////////////////////////// LIST FOR MAP VIEW ////////////////////////////
     public List<LatLng> Location() {
         List<LatLng> coordinates = new ArrayList<LatLng>();
-        Double[] lat = null, lng = null;
+        double[] lat = null, lng = null;
 
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_latitude + " , " + Col_longitude + " FROM " + TABLE_tp_placedetail, null);
         cursor.moveToFirst();
-        lat = new Double[cursor.getCount()];
-        lng = new Double[cursor.getCount()];
+        lat = new double[cursor.getCount()];
+        lng = new double[cursor.getCount()];
         for (int i = 0; i < lat.length; i++) {
             coordinates.add(new LatLng(cursor.getDouble((cursor.getColumnIndex(Col_latitude))),
                     (cursor.getDouble(cursor.getColumnIndex(Col_longitude)))));
@@ -464,7 +497,7 @@ public class Control_Database {
     } // getContact
 
 
-    public Double getLat(String place) {
+    public double getLat(String place) {
         double lat;
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_latitude + " FROM " + TABLE_tp_placedetail
                 + " WHERE " + Col_p_name + " = '" + place + "'", null);
@@ -483,7 +516,7 @@ public class Control_Database {
         return lat;
     } // getLat
 
-    public Double getLng(String place) {
+    public double getLng(String place) {
         double lng;
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_longitude + " FROM " + TABLE_tp_placedetail
                 + " WHERE " + Col_p_name + " = '" + place + "'", null);

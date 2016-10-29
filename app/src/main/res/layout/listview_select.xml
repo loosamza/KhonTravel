@@ -1,55 +1,56 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:background="#b5deaa"
     android:gravity="center|top"
-    android:background="#b5deaa">
+    android:orientation="horizontal">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_margin="10dp"
+        android:background="@xml/listw"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
             android:orientation="horizontal"
-            android:id="@+id/show"
-            android:background="@xml/listw"
-            android:layout_margin="10dp">
+            android:padding="20dp">
 
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/main_pic"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:id="@+id/main_pic" />
+                    android:layout_marginTop="10dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center|left">
+                android:gravity="center|left"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtPname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="New Text"
-                    android:id="@+id/txtPname"
-                    android:typeface="serif"
                     android:textColor="#000000"
-                    android:textSize="16dp"
                     android:textIsSelectable="false"
-                    android:gravity="center_horizontal" />
+                    android:textSize="16dp"
+                    android:typeface="serif" />
             </LinearLayout>
 
             <!-- <LinearLayout
@@ -96,6 +97,43 @@
                      android:textSize="20dp" />
 
              </LinearLayout>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/show"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:id="@+id/p_progressbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+
+                app:rcBackgroundPadding="5dp"
+                app:rcIconPadding="3dp"
+                app:rcIconSize="40dp"
+
+
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp" />
+
+            <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
+                android:id="@+id/n_progressbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                app:rcBackgroundPadding="3dp"
+                app:rcIconPadding="5dp"
+
+                app:rcIconSize="40dp"
+
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp" />
 
         </LinearLayout>
     </LinearLayout>
