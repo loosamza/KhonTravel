@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -20,15 +22,17 @@ import com.squareup.picasso.Picasso;
 public class MyAdapter extends BaseAdapter {
     private Context context;
     private String[] strListPlaceName, strListImg;
-    private double[] pos, neg;
+    private float[] pos, neg;
     private String strGetURL;
+    private String type;
 
-    public MyAdapter(Context context, String[] strListPlaceName, String[] strListImg, double[] pos, double[] neg) {
+    public MyAdapter(Context context, String[] strListPlaceName, String[] strListImg, float[] pos, float[] neg, String type) {
         this.context = context;
         this.strListPlaceName = strListPlaceName;
         this.strListImg = strListImg;
         this.pos = pos;
         this.neg = neg;
+        this.type = type;
         this.strGetURL = strGetURL;
     }//Constructor
 
@@ -61,21 +65,31 @@ public class MyAdapter extends BaseAdapter {
 
         //Set up Progress Bar
 
-        IconRoundCornerProgressBar posProgressBar = (IconRoundCornerProgressBar) view.findViewById(R.id.p_progressbar);
+        TextRoundCornerProgressBar posProgressBar = (TextRoundCornerProgressBar) view.findViewById(R.id.pos_progressbar);
         posProgressBar.setProgressColor(Color.parseColor("#00ef7b"));
-        posProgressBar.setIconBackgroundColor(Color.parseColor("#005b2f"));
+        posProgressBar.setProgressBackgroundColor(Color.parseColor("#dcede5"));
+        posProgressBar.setProgressText("" + pos[position] + "%");
+        posProgressBar.setTextProgressColor(Color.BLACK);
+        posProgressBar.setTextProgressSize(10);
+        posProgressBar.setTextProgressMargin(2);
+        posProgressBar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         posProgressBar.setMax(100);
-        posProgressBar.setProgress((float) pos[position]);
-        posProgressBar.setIconImageResource(R.drawable.icon_pos);
-        posProgressBar.setRadius(10);
+        posProgressBar.setProgress(pos[position]);
+        posProgressBar.setRadius(5);
 
-        IconRoundCornerProgressBar negProgressBar = (IconRoundCornerProgressBar) view.findViewById(R.id.n_progressbar);
+        TextRoundCornerProgressBar negProgressBar = (TextRoundCornerProgressBar) view.findViewById(R.id.neg_progressbar);
         negProgressBar.setProgressColor(Color.parseColor("#f9584f"));
-        negProgressBar.setIconBackgroundColor(Color.parseColor("#fc0c00"));
+        negProgressBar.setProgressBackgroundColor(Color.parseColor("#dcede5"));
+        negProgressBar.setProgressText("" + neg[position] + "%");
+        negProgressBar.setTextProgressColor(Color.BLACK);
+        negProgressBar.setTextProgressSize(10);
+        negProgressBar.setTextProgressMargin(2);
+        negProgressBar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
         negProgressBar.setMax(100);
-        negProgressBar.setProgress((float) neg[position]);
-        negProgressBar.setIconImageResource(R.drawable.icon_neg);
-        negProgressBar.setRadius(10);
+        negProgressBar.setProgress(neg[position]);
+
+        negProgressBar.setRadius(5);
 
 
         Picasso.with(this.context).load(strListImg[position]).resize(200, 150).into(listImg);
@@ -83,7 +97,28 @@ public class MyAdapter extends BaseAdapter {
         listPlace.setText(strListPlaceName[position]);
         //Log.d("IMG", "IMG >>>> " + strListImg[position].toString());
 
+        LinearLayout bg = (LinearLayout) view.findViewById(R.id.pn_bg);
+        LinearLayout show = (LinearLayout) view.findViewById(R.id.show);
+        if (type.equals("ทะเล")) {
+            bg.setBackgroundColor(Color.parseColor("#b66af4"));
+            show.setBackgroundColor(Color.parseColor("#b66af4"));
+        } else if (type.equals("น้ำตก")) {
+            bg.setBackgroundColor(Color.parseColor("#ff62a1"));
+            show.setBackgroundColor(Color.parseColor("#ff62a1"));
+        } else if (type.equals("ถ้ำ")) {
+            bg.setBackgroundColor(Color.parseColor("#58ffbf"));
+            show.setBackgroundColor(Color.parseColor("#58ffbf"));
+        } else if (type.equals("แก่ง")) {
+            bg.setBackgroundColor(Color.parseColor("#f7604f"));
+            show.setBackgroundColor(Color.parseColor("#f7604f"));
+        } else if (type.equals("ภูเขา")) {
+            bg.setBackgroundColor(Color.parseColor("#ffd665"));
+            show.setBackgroundColor(Color.parseColor("#ffd665"));
+        }
+
 
         return view;
     }
+
+
 }//Main

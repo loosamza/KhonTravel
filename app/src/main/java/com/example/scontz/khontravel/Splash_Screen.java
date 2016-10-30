@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.util.Random;
 
 import cz.msebera.android.httpclient.HttpEntity;
@@ -200,8 +201,8 @@ public class Splash_Screen extends AppCompatActivity {
                 String pic_code = jsonObject.getString("pic_code");
                 double latitude = jsonObject.getDouble("latitude");
                 double longitude = jsonObject.getDouble("longitude");
-                double p_pos = jsonObject.getInt("p_pos");
-                double p_neg = jsonObject.getInt("p_neg");
+                float p_pos = BigDecimal.valueOf(jsonObject.getDouble("p_pos")).floatValue();
+                float p_neg = BigDecimal.valueOf(jsonObject.getDouble("p_neg")).floatValue();
 
 
                 long insertValue = objControl_Database.addValueToPlaceDetail(p_name, ptype_name, p_des, p_travel, p_open, p_contact, main_pic, pic_code, latitude, longitude, p_pos, p_neg);

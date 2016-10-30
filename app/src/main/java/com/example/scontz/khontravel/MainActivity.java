@@ -68,6 +68,8 @@ import cz.msebera.android.httpclient.extras.Base64;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     final String LOGIN = "App_Login";
+
+
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
@@ -124,6 +126,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sp = getSharedPreferences(LOGIN, Context.MODE_PRIVATE);
         int id = sp.getInt("uid", -1);
+
+
+
         Log.d("Login", "" + id);
 
         if (id != 0) {

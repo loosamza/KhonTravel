@@ -224,15 +224,15 @@ public class Control_Database {
         return doubList;
     } // ListLng
 
-    public double[] ListPos(String type) {
-        double[] doubList = null;
+    public float[] ListPos(String type) {
+        float[] doubList = null;
 
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_pos + " FROM " + TABLE_tp_placedetail + " WHERE " + Col_ptype_name + " = '" + type + "'", null);
         cursor.moveToFirst();
 
-        doubList = new double[cursor.getCount()];
+        doubList = new float[cursor.getCount()];
         for (int i = 0; i < cursor.getCount(); i++) {
-            doubList[i] = cursor.getDouble(cursor.getColumnIndex(Col_p_pos));
+            doubList[i] = cursor.getFloat(cursor.getColumnIndex(Col_p_pos));
             cursor.moveToNext();
 
         } // for
@@ -240,15 +240,15 @@ public class Control_Database {
         return doubList;
     } // ListPos
 
-    public double[] ListNeg(String type) {
-        double[] doubList = null;
+    public float[] ListNeg(String type) {
+        float[] doubList = null;
 
         Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_neg + " FROM " + TABLE_tp_placedetail + " WHERE " + Col_ptype_name + " = '" + type + "'", null);
         cursor.moveToFirst();
 
-        doubList = new double[cursor.getCount()];
+        doubList = new float[cursor.getCount()];
         for (int i = 0; i < cursor.getCount(); i++) {
-            doubList[i] = cursor.getDouble(cursor.getColumnIndex(Col_p_neg));
+            doubList[i] = cursor.getFloat(cursor.getColumnIndex(Col_p_neg));
             cursor.moveToNext();
 
         } // for

@@ -3,6 +3,7 @@ package com.example.scontz.khontravel;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,7 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.scontz.khontravel.Fonts.TypefaceUti;
@@ -20,6 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class ShowSelect extends AppCompatActivity {
 
     final String LOGIN = "App_Login";
+    final String T_IMG = "App_Tile";
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
@@ -27,12 +31,13 @@ public class ShowSelect extends AppCompatActivity {
     TextView txtPlaceType;
     String[] strListPlaceName, strListImg, strListDes, strListTravel, strListOpen, strListContact; //ตัวเก็บค่า
     String strPlaceName, strDes, strTravel, strOpen, strContact, strImg; //ตัวโยนค่า
-    double[] douListLat, doubListLng,doubListPos,doubListNeg;
+    double[] douListLat, doubListLng;
+    float[] doubListPos, doubListNeg;
     double doubLat, doubLng;
     private double[] pos, neg; // %
     String type;
     private String u, f, l;
-     int i;
+    int i;
     Bundle bundle;
 
     @Override
@@ -50,7 +55,7 @@ public class ShowSelect extends AppCompatActivity {
     }
 
     private void createListView() {
-        MyAdapter myAdapter = new MyAdapter(ShowSelect.this, strListPlaceName, strListImg, doubListPos, doubListNeg);
+        MyAdapter myAdapter = new MyAdapter(ShowSelect.this, strListPlaceName, strListImg, doubListPos, doubListNeg, type);
 
         ListView listView = (ListView) findViewById(R.id.selectListview);
 
@@ -74,8 +79,6 @@ public class ShowSelect extends AppCompatActivity {
 
                 //Intent
                 Intent intent = new Intent(getApplicationContext(), Result.class);
-
-
 
 
                 intent.putExtra("strType", type);
@@ -112,7 +115,6 @@ public class ShowSelect extends AppCompatActivity {
         doubListNeg = objContrrol_Database.ListNeg(type);
 
 
-
     }
 
     private void initWidget() {
@@ -121,6 +123,42 @@ public class ShowSelect extends AppCompatActivity {
         txtPlaceType.setText(type);
 
 
+        setTBG(type);
+
+
+    }
+
+    private void setTBG(String t) {
+        LinearLayout t_bg = (LinearLayout) findViewById(R.id.titleBG);
+        LinearLayout l_bg = (LinearLayout) findViewById(R.id.l_titleBG);
+        RelativeLayout r_bg = (RelativeLayout) findViewById(R.id.r_bg);
+
+        if (t.equals("ทะเล")) {
+            t_bg.setBackgroundResource(R.drawable.title_beach);
+            l_bg.setBackgroundColor(Color.parseColor("#b66af4"));
+            r_bg.setBackgroundColor(Color.parseColor("#b66af4"));
+
+        } else if (t.equals("น้ำตก")) {
+            t_bg.setBackgroundResource(R.drawable.title_waterfall);
+            l_bg.setBackgroundColor(Color.parseColor("#ff62a1"));
+            r_bg.setBackgroundColor(Color.parseColor("#ff62a1"));
+
+        } else if (t.equals("ถ้ำ")) {
+            t_bg.setBackgroundResource(R.drawable.title_cave);
+            l_bg.setBackgroundColor(Color.parseColor("#58ffbf"));
+            r_bg.setBackgroundColor(Color.parseColor("#58ffbf"));
+
+        } else if (t.equals("แก่ง")) {
+            t_bg.setBackgroundResource(R.drawable.title_canu);
+            l_bg.setBackgroundColor(Color.parseColor("#f7604f"));
+            r_bg.setBackgroundColor(Color.parseColor("#f7604f"));
+
+        } else if (t.equals("ภูเขา")) {
+            t_bg.setBackgroundResource(R.drawable.title_mountain);
+            l_bg.setBackgroundColor(Color.parseColor("#ffd665"));
+            r_bg.setBackgroundColor(Color.parseColor("#ffd665"));
+
+        }
 
 
     }
