@@ -7,10 +7,10 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:id="@+id/imageView3"
-        android:src="@drawable/logo_pic"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:src="@drawable/title_beach" />
 
     <LinearLayout
         android:orientation="vertical"
