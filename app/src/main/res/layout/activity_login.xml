@@ -7,19 +7,21 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:id="@+id/imageView3"
-        android:layout_margin="5dp"
-        android:src="@drawable/title_beach" />
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/title_login" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#9cfafd"
         android:layout_below="@+id/imageView3"
-        android:background="#fffcfc"
-        android:layout_margin="10dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -30,23 +32,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/imageView5"
-                    android:layout_alignParentLeft="true"
-                    android:background="#fe0000"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
-
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/user"
                     android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/imageView5"
                     android:hint="Username"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:textSize="12dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#000000"
+                    android:background="#fffefe"
+                    android:padding="5dp" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -60,29 +58,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/imageView6"
-                    android:layout_alignParentLeft="true"
-                    android:background="#000000"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
-
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/pass"
                     android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/imageView6"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:typeface="serif" />
+                    android:typeface="serif"
+                    android:textSize="12dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#000000"
+                    android:padding="5dp"
+                    android:background="#ffffff" />
             </RelativeLayout>
         </LinearLayout>
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Sing In"
             android:id="@+id/login"
@@ -90,30 +84,34 @@
             android:layout_marginTop="10dp"
             android:background="#22923e"
             android:textColor="#000000"
-            android:typeface="serif" />
+            android:typeface="serif"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Using with out Sign In"
+            android:text="เข้าใช้งานโดยบุคคลทั่วไป"
             android:id="@+id/gotoMain"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:textColor="#060606"
-            android:textSize="12dp"
-            android:typeface="serif" />
+            android:textSize="16dp"
+            android:typeface="serif"
+            android:layout_marginBottom="30dp" />
 
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create New Account"
+        android:text="สมัครสมาชิก"
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:textColor="#060606"
-        android:textSize="12dp"
+        android:textSize="16dp"
         android:typeface="serif" />
+
 </RelativeLayout>
