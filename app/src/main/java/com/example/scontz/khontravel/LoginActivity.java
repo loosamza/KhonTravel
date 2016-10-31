@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
     String[] uidList, usernameList, passwordList, firstnameList, lastnameList;
 
 
-
     Control_Database objControl_Database;
 
     @Override
@@ -236,6 +235,17 @@ public class LoginActivity extends AppCompatActivity {
         SQLiteDatabase objSQLiteDataase = openOrCreateDatabase("endproject.db", MODE_PRIVATE, null);
         objSQLiteDataase.delete("tb_user", null, null);
     } // Delete
+
+    public void goRegister(View view) {
+        Intent intent = new Intent(getApplicationContext(), Register.class);
+        intent.putExtra("usernameList", usernameList);
+        startActivity(intent);
+    }
+
+    public void goLogin(View view) {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
 
 
 }

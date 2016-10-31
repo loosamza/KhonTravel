@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.scontz.khontravel.Register"
+    android:background="#15c9fb">
+
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:padding="25dp"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#9cfafd">
+
+            <TextView
+                android:id="@+id/Register_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="Register"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+            <EditText
+                android:id="@+id/username_edtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Register_tv"
+                android:layout_marginTop="25dp"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:hint="Username"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:textSize="12dp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_centerInParent="true"
+                android:gravity="left" />
+
+            <EditText
+                android:id="@+id/passwd_edtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/username_edtext"
+                android:layout_marginTop="25dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:textSize="12dp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_centerInParent="true"
+                android:gravity="left" />
+
+            <EditText
+                android:id="@+id/cnfpasswd_edtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwd_edtext"
+                android:layout_marginTop="25dp"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:textSize="12dp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_centerInParent="true"
+                android:gravity="left" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fname_edtext"
+                android:layout_below="@+id/cnfpasswd_edtext"
+                android:layout_marginTop="25dp"
+                android:hint="First Name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:textSize="12dp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_centerInParent="true"
+                android:gravity="left" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lname_edtext"
+                android:layout_below="@+id/fname_edtext"
+                android:layout_marginTop="25dp"
+                android:hint="Last Name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:textSize="12dp"
+                android:typeface="serif"
+                android:padding="5dp"
+                android:layout_centerInParent="true"
+                android:gravity="left" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lname_edtext"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="REGISTER"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:background="#000000"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="onRegister" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mem_login"
+                android:id="@+id/member_login_button"
+                android:layout_below="@+id/register_button"
+                android:background="#00ff19"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="25dp"
+                android:onClick="goLogin"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

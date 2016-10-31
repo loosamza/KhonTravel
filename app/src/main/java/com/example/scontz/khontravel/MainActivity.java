@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     final String LOGIN = "App_Login";
 
-
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 

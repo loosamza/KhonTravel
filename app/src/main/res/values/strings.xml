@@ -14,6 +14,8 @@
     <string name="google_maps_key">AIzaSyCtKKdyGkVOQV6wMaW5zhsNgjzb8wduLYc</string>
     <string name="facebook_app_id">1046488428782258</string>
     <string name="title_activity_log">LogActivity</string>
+    <string name="title_activity_register">ลงทะเบียน</string>
+    <string name="mem_login">ผู้ใช้เข้าสู่ระบบ</string>
 
 
 </resources>

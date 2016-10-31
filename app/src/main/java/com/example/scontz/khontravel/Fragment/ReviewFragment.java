@@ -141,8 +141,8 @@ public class ReviewFragment extends Fragment {
     private void upDateCommentToMySQL() {
         //Setup Policy
         if (Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy myPilicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(myPilicy);
+            StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(myPolicy);
         }
 
         //Up Value

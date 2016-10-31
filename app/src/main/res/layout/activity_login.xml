@@ -112,6 +112,7 @@
         android:layout_marginBottom="30dp"
         android:textColor="#060606"
         android:textSize="16dp"
-        android:typeface="serif" />
+        android:typeface="serif"
+        android:onClick="goRegister" />
 
 </RelativeLayout>
