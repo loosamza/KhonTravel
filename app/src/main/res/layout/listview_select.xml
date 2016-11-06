@@ -106,7 +106,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginBottom="3dp"
-                    app:rcBackgroundPadding="3dp"
+
                     android:background="@drawable/rounded_corner">
 
                     <ImageView

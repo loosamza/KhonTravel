@@ -133,6 +133,8 @@ public class ReviewFragment extends Fragment {
 
         if (id != 0) {
             uname = activity.getUser();
+        } else {
+            uname = "ผู้ใช้ทั่วไป";
         }
 
 

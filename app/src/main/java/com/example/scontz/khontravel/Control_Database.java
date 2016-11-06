@@ -97,16 +97,12 @@ public class Control_Database {
     }
 
 
-
     public long addValueToUID(String uid) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Col_uid, uid);
         //contentValues.put(Col_token, token);
         return writeSQLite.insert(TABLE_tb_user, null, contentValues);
     } // add value to user Table
-
-
-
 
 
     public String[] ListPlaceName(String type) {
@@ -321,6 +317,63 @@ public class Control_Database {
         cursor.close();
         return strList;
     } // ListMapPlaceType
+
+    public String[] ListMapDes() {
+
+        String[] strList = null;
+        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_des + " FROM " + TABLE_tp_placedetail, null);
+        cursor.moveToFirst();
+        strList = new String[cursor.getCount()];
+        for (int i = 0; i < cursor.getCount(); i++) {
+            strList[i] = cursor.getString(cursor.getColumnIndex(Col_p_des));
+            cursor.moveToNext();
+        } // for
+        cursor.close();
+        return strList;
+    } // ListMapDes
+
+    public String[] ListMapTravel() {
+
+        String[] strList = null;
+        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_travel + " FROM " + TABLE_tp_placedetail, null);
+        cursor.moveToFirst();
+        strList = new String[cursor.getCount()];
+        for (int i = 0; i < cursor.getCount(); i++) {
+            strList[i] = cursor.getString(cursor.getColumnIndex(Col_p_travel));
+            //Log.d("IMG", "place ===> " + strList[i].toString());
+            cursor.moveToNext();
+        } // for
+        cursor.close();
+        return strList;
+    } // ListMapTravel
+
+    public String[] ListMapOpen() {
+
+        String[] strList = null;
+        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_open + " FROM " + TABLE_tp_placedetail, null);
+        cursor.moveToFirst();
+        strList = new String[cursor.getCount()];
+        for (int i = 0; i < cursor.getCount(); i++) {
+            strList[i] = cursor.getString(cursor.getColumnIndex(Col_p_open));
+            cursor.moveToNext();
+        } // for
+        cursor.close();
+        return strList;
+    } // ListMapOpen
+
+    public String[] ListMapContact() {
+
+        String[] strList = null;
+        Cursor cursor = readSQLite.rawQuery("SELECT " + Col_p_contact + " FROM " + TABLE_tp_placedetail, null);
+        cursor.moveToFirst();
+        strList = new String[cursor.getCount()];
+        for (int i = 0; i < cursor.getCount(); i++) {
+            strList[i] = cursor.getString(cursor.getColumnIndex(Col_p_contact));
+            cursor.moveToNext();
+        } // for
+        cursor.close();
+        return strList;
+    } // ListMapContact
 
     //////////////////////////// EMD LIST FOR MAP VIEW ////////////////////////////
     public String[] AllList(String column) {

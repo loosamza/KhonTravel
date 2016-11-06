@@ -60,7 +60,7 @@ public class DescriptionFragment extends Fragment {
     }// find id get Intent
 
     private void setAll() {
-        Picasso.with(getActivity()).load(e).resize(300, 100).into(img);
+        Picasso.with(getActivity()).load(e).resize(400, 100).into(img);
         txtPlaceName.setText(a);
         txtPlaceDes.setText(b);
         txtPlaceTravel.setText(c);

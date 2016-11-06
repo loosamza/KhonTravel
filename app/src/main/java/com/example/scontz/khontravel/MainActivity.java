@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String setuserName, setuserPic;
     ActionBarDrawerToggle toggle;
     Control_Database objControl_Databse;
-    private String[] strMLpName, strMLpType, strMLIMG;
+    private String[] strMLpName, strMLpType, strMLIMG, strMLdes, strMLTravel, strMLOpen, strMLContact;
+    ;
     List<LatLng> location;
     LatLng coordinate;
     private double[] listLat, listLng;
@@ -127,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = sp.getInt("uid", -1);
 
 
-
         Log.d("Login", "" + id);
 
         if (id != 0) {
@@ -165,6 +165,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         strMLpName = objControl_Databse.ListMapPlaceName();
         strMLpType = objControl_Databse.ListMapPlaceType();
         strMLIMG = objControl_Databse.ListMapIMG();
+        strMLdes = objControl_Databse.ListMapDes();
+        strMLTravel = objControl_Databse.ListMapTravel();
+        strMLOpen = objControl_Databse.ListMapOpen();
+        strMLContact = objControl_Databse.ListMapContact();
+
         location = objControl_Databse.Location();
 
         listLat = new double[location.size()];
@@ -283,6 +288,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             arr = strMLpType;
         } else if (what == "img") {
             arr = strMLIMG;
+        } else if (what == "open") {
+            arr = strMLOpen;
+        } else if (what == "travel") {
+            arr = strMLTravel;
+        } else if (what == "des") {
+            arr = strMLdes;
+        } else if (what == "contact") {
+            arr = strMLContact;
         }
         return arr;
 
